@@ -11,14 +11,14 @@
  */
 class Solution {
 public:
-    vector<int> inorderTraversalHelper(TreeNode* root, vector<int> vec){
+    vector<int> inorderTraversalHelper(TreeNode* root, vector<int>& vec){
         if(root==nullptr){
             return vec;
         }
         
-        vec=inorderTraversalHelper(root->left,vec);
+        inorderTraversalHelper(root->left,vec);
         vec.push_back(root->val);
-        vec=inorderTraversalHelper(root->right,vec);
+        inorderTraversalHelper(root->right,vec);
         
         return vec;
     }
