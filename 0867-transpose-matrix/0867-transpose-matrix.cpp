@@ -16,7 +16,9 @@ public:
                 
             }
         }
-        return result;
+        // return result;
+        matrix=result;
+        return matrix;
         
     }
 };
