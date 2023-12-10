@@ -53,7 +53,7 @@ public:
                 max_sum = sum;
             }
             if(sum < 0){
-                sum = 0;
+                sum = 0;// because we would not like to carry negative sum forward which will in future will only reduce the value of the sum.
             }
         }
         return max_sum;
