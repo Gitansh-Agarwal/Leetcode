@@ -11,13 +11,13 @@ public:
             
             for(int j=0; j<n; j++){
                 
-                // row[i]+=grid[i][j];
-                // column[j]+=grid[i][j];
+                row[i]+=grid[i][j];
+                column[j]+=grid[i][j];
                 
-                if(grid[i][j] == 1){
-                    row[i]++;
-                    column[j]++;
-                }
+                // if(grid[i][j] == 1){
+                //     row[i]++;
+                //     column[j]++;
+                // }
                 
             }
         }
