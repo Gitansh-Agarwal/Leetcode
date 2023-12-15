@@ -9,6 +9,7 @@ public:
         for(auto i : paths){
             mp.erase(i[0]);
         }
-        return (*mp.begin()).first;
+        // return (*mp.begin()).first;
+        return (mp.begin())->first;
     }
 };
