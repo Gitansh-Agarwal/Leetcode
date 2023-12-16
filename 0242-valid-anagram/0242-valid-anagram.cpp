@@ -30,10 +30,10 @@ public:
         vector<int> vec(26,0);
         
         for(auto i : s){
-            ++vec[i-'a'];
+            vec[i-'a']++;
         }
         for(auto i : t){
-            --vec[i-'a'];
+            vec[i-'a']--;
         }
         for(int i=0; i<26; i++){
             if(vec[i]!=0){
