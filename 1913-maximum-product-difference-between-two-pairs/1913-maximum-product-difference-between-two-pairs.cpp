@@ -1,6 +1,7 @@
 class Solution {
 public:
     int maxProductDifference(vector<int>& nums) {
+        
         int maximum = INT_MIN;
         int secondMaximum = INT_MIN;
         int smallest = INT_MAX;
