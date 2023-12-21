@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxWidthOfVerticalArea(vector<vector<int>>& points) {
-        sort(points.begin(),points.end(), [](vector<int>& a, vector<int>& b){
+        sort(points.begin(),points.end(), [](const vector<int>& a, const vector<int>& b){
             return a[0] < b[0];
         });
         
