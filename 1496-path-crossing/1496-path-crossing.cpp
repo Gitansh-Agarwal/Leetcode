@@ -7,7 +7,7 @@ public:
         int cy = 0;
         
         for(auto i : path){
-            visited[{cx, cy}] = 1;
+            visited[{cx, cy}] = true;
             
             if(i == 'N')
                 --cx;
@@ -19,8 +19,8 @@ public:
                 --cy;
             
             if(visited.count({cx ,cy}))
-                return 1;
+                return true;
         }
-        return 0;
+        return false;
     }
 };
