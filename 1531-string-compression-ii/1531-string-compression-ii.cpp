@@ -29,9 +29,9 @@ public:
             take = notake = 1e9;
                
             int inc = last_count == 1 or last_count == 9 or last_count == 99;
-            
+            // s[cur_pos]-'a'
             if(s[cur_pos] - 'a' == last_char){
-               take = helper(cur_pos + 1, left_k, s[cur_pos]-'a', last_count+1) + inc;
+               take = helper(cur_pos + 1, left_k, last_char, last_count+1) + inc;
             }
             else{
                 take = helper(cur_pos + 1, left_k, s[cur_pos]-'a', 1) + 1;
