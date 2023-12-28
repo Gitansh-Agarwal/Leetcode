@@ -7,7 +7,6 @@ public:
         int n=x;
         int digit;
         int max = 2147483647;//INT32_MAX.
-        int min = -2147483648;//INT32_MIN.
         while(n!=0){
             digit = n%10;
             n/=10;
