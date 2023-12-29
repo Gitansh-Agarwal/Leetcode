@@ -19,7 +19,7 @@ public:
             }
         }
         
-        return dp[0][0] >= inf ? -1 : dp[0][0];
+        return dp[0][0] == inf ? -1 : dp[0][0];
         
     }
 };
