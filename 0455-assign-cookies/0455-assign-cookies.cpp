@@ -31,8 +31,9 @@ public:
         int ans = 0;
         int child = 0;
         int cookie = 0;
-        
-        while(cookie < s.size() && child < g.size()){
+        int lengthG = g.size();
+        int lengthS = s.size();
+        while(cookie < lengthS && child < lengthG){
             if(g[child] <= s[cookie]){
                 ans++;
                 child++;
