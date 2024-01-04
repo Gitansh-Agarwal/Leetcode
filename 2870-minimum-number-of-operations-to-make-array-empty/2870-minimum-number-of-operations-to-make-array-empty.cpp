@@ -44,15 +44,21 @@ public:
             if(i.second % 3 == 0){
                 ans += i.second/3;
             }
-            else if(i.second % 3 == 2){
-                ans++;
-                ans += (i.second - 2) / 3;
-            }
-            else{
+            else if(i.second % 3 == 1){
                 if(i.second == 1)
                     return -1;
                 ans+=2;
                 ans += (i.second - 4) / 3;
+                // ans++;
+                // ans += (i.second - 2) / 3;
+            }
+            else{
+                // if(i.second == 1)
+                //     return -1;
+                // ans+=2;
+                // ans += (i.second - 4) / 3;
+                ans++;
+                ans += (i.second - 2) / 3;
             }
         }
         return ans;
