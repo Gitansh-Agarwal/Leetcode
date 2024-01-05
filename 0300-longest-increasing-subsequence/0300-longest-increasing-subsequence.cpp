@@ -9,7 +9,8 @@ public:
             int pos = lower_bound(dp.begin(), dp.end(), nums[i]) - dp.begin();
             
             if(pos<n){
-                dp[pos] = min(dp[pos], nums[i]);
+                // dp[pos] = min(dp[pos], nums[i]);
+                dp[pos] = nums[i];
             }
         }
         
