@@ -45,10 +45,7 @@ public:
         if(root1->right != nullptr){
             preorder(root1->right, vec1);
         }
-        // else{
-        //     preorder(root1->left, vec1);
-        //     preorder(root1->right, vec1);
-        // }
+        
         return vec1;
     }
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
