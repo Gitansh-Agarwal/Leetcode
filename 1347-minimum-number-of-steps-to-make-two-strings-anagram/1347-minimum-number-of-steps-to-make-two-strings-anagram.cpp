@@ -13,7 +13,8 @@ public:
         int ans = 0;
         for(int i=0; i<26; i++){
             // ans += abs(freq[i]);
-            ans += freq[i] > 0? freq[i] : 0;
+            // ans += freq[i] > 0? freq[i] : 0;
+            ans += freq[i] < 0? -freq[i] : 0;
         }
         
         // return ans >> 1;//right shift by 1 means divide by 2;
