@@ -14,7 +14,7 @@ public:
             }
         }
         tempReverse = temp;
-        reverse(temp.begin(), temp.end());
+        reverse(tempReverse.begin(), tempReverse.end());
         if(temp == tempReverse)
             return true;
         return false;
