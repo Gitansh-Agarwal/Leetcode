@@ -14,7 +14,7 @@ public:
             long target = nums[right];
             curr += target;
             
-            while (static_cast<long long>((right - left + 1) * target) - curr > k) {
+            while (static_cast<long long>((right - left + 1) * target - curr) > k) {
                 curr -= nums[left];
                 left++;
             }
