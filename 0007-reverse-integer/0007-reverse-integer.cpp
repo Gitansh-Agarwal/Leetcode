@@ -11,9 +11,9 @@ public:
             digit = x % 10;
             x/=10;
             
-            if((rev > max/10) or (rev == max/10  && digit > max%10))
+            if((rev > max/10) or (rev == max/10 && digit > max%10)) // OR if(rev > max/10)
                 return 0;
-            if((rev < min/10) or (rev == min/10 && digit < min%10))
+            if((rev < min/10) or (rev == min/10 && digit < min%10)) // OR if(rev  min/10) 
                 return 0;
             rev = rev*10 + digit;
         }
