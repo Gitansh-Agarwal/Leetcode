@@ -53,22 +53,45 @@ public:
         // return maxLength;
         
         //OR
-        int lastSmaller= INT_MIN;
+        // int lastSmaller= INT_MIN;
+        // int n=nums.size();
+        // int maxLength=0;
+        // int cnt=0;
+        // sort(nums.begin(), nums.end());
+        // for(int i=0; i<n; i++){
+        //     if(lastSmaller == nums[i] - 1){
+        //         cnt++;
+        //         lastSmaller= nums[i];
+        //     }
+        //     else if(lastSmaller != nums[i]){
+        //         cnt=1;
+        //         lastSmaller = nums[i];
+        //     }
+        //     maxLength= max(maxLength, cnt);
+        // }
+        // return maxLength;
+        
+        
+        //Optimal Solution = Using Unordered Set.
+        //TC=O(3*N), extra SC=O(N) assuming unordered_set uses O(1) time complexity
+        unordered_set<int> st;
+        int length=0;
         int n=nums.size();
-        int maxLength=0;
-        int cnt=0;
-        sort(nums.begin(), nums.end());
         for(int i=0; i<n; i++){
-            if(lastSmaller == nums[i] - 1){
-                cnt++;
-                lastSmaller= nums[i];
-            }
-            else if(lastSmaller != nums[i]){
-                cnt=1;
-                lastSmaller = nums[i];
-            }
-            maxLength= max(maxLength, cnt);
+            st.insert(nums[i]);
         }
-        return maxLength;
+        
+        for(auto it: st){
+            if(st.find(it-1) == st.end()){
+                int cnt=1;
+                int x=it;
+                while(st.find(x+1) != st.end()){
+                    cnt++;
+                    x=x+1;
+                }
+                length = max(length, cnt);
+            }
+        }
+        return length;
     }
 };
