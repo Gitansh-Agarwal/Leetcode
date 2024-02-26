@@ -14,7 +14,7 @@ public:
     }
     //printing nth row of the pascal's triangle.
     //TC=O(N*r), SC=O(N) , extra SC=O(1).
-    vector<int> generateRow(int n){
+    vector<int> generateRow1(int n){
         vector<int> temp;
         for(int col=1; col<=n; col++){
             temp.push_back(nCr(n-1, col-1));
@@ -23,7 +23,7 @@ public:
     }
     // or 
     //TC=O(N){elements to be printed are equal to the row number}, SC=O(N){for storing the                 result},extra SC=O(1)
-    vector<int> generateRow1(int row){
+    vector<int> generateRow2(int row){
         vector<int> temp;
         temp.push_back(1);
         long long res=1;
@@ -37,12 +37,23 @@ public:
     
     vector<vector<int>> generate(int numRows) {
         //Brute Force Solution
+        //TC=O(N*N*r) = O(N^3), SC=O(N^2), extra SC=O(1).
+        // vector<vector<int>> ans;
+        // for(int row=1; row<=numRows; row++){
+        //     vector<int> temp;
+        //     for(int col=1; col<=row; col++){
+        //         temp.push_back(nCr(row-1, col-1));
+        //     }
+        //     ans.push_back(temp);
+        // }
+        // return ans;
+        
+        
+        //Optimal Solution
+        //TC=O(N^2), SC=O(N^2), extra SC=O(1).
         vector<vector<int>> ans;
         for(int row=1; row<=numRows; row++){
-            vector<int> temp;
-            for(int col=1; col<=row; col++){
-                temp.push_back(nCr(row-1, col-1));
-            }
+            vector<int> temp = generateRow2(row);
             ans.push_back(temp);
         }
         return ans;
