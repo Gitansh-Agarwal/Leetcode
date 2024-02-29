@@ -80,7 +80,7 @@ public:
                 j++;
                 k--;
                 while(j<k && nums[j] == nums[j-1])   j++;
-                while(k>j && nums[k] == nums[k+1])   k--;
+                while(j<k && nums[k] == nums[k+1])   k--;
             }
         }
     }
