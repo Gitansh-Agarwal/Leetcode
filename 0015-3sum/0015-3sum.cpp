@@ -1,5 +1,15 @@
 class Solution {
 public:
+    struct hashFunction {
+        size_t operator()(const vector<int>& myVector) const {
+            std::hash<int> hasher;
+            size_t answer = 0;
+            for (int i : myVector) {
+                answer ^= hasher(i);
+            }
+            return answer;
+        }
+    };
     vector<vector<int>> threeSum(vector<int>& nums) {
     // Write your code here.
     //TC=O(N^3 * log(no. of unique triplets))
@@ -24,6 +34,8 @@ public:
     //TC=O(N^2 * logM {M is size of set})
     //SC=O(N){hashset} + O(no. of uniques).
     // set<vector<int>> st;
+    // or
+    // std::unordered_set<std::vector<int>, hashFunction> st;
     // int n=nums.size();
     // for(int i=0; i<n; i++){
     //     set<int> hashset;
