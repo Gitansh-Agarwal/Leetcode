@@ -42,7 +42,7 @@ public:
     //             sum+=nums[k];
     //             long long fourth = target - sum;
     //             if(hashset.find(fourth) != hashset.end()){
-    //                 vector<int> temp = {nums[i], nums[j], nums[k], fourth};
+    //                 vector<int> temp = {nums[i], nums[j], nums[k], (int)fourth};
     //                 sort(temp.begin(), temp.end());
     //                 st.insert(temp);
     //             }
