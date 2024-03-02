@@ -17,17 +17,18 @@ public:
         vector<int> res(n);
         int i=0, j=n-1;
         int k=n-1;
-        while(i<=j){
+        while(k >= 0){// or i<=j
             int n1=nums[i]*nums[i];
             int n2=nums[j]*nums[j];
             if(n2 > n1){
-                res[k--] = n2;
+                res[k] = n2;//res[k--]=n2
                 j--;
             }
             else{
-                res[k--] = n1;
+                res[k] = n1;//res[k--]=n1
                 i++;
             }
+            k--;
         }
         return res;
     }
