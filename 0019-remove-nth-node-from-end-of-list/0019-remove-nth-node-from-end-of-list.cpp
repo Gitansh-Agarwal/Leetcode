@@ -11,33 +11,54 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int length=0;
-        ListNode* temp = head;
-        while(temp!=nullptr){
-            length++;
-            temp=temp->next;
+        //Brute Force Solution
+        //TC=O(length) + O(length-n) , extra SC=O(1).
+//         int length=0;
+//         ListNode* temp = head;
+//         while(temp!=nullptr){
+//             length++;
+//             temp=temp->next;
+//         }
+//         if(length == n){
+//             temp = head->next;
+//             delete head;
+//             return temp;
+//         }
+//         int breakPoint = length - n;
+//         breakPoint--;
+//         temp=head;
+//         while(breakPoint > 0){
+//             temp=temp->next;
+//             breakPoint--;
+//         }
+//         ListNode* temp1 = temp->next;
+//         temp->next = temp->next->next;
+//         delete temp1;
+        
+//         return head;
+        
+        
+        
+        //Optimal Solution
+        //TC=O(length), extra SC=O(1).
+        ListNode* fast=head;
+        for(int i=0; i<n; i++){
+           fast=fast->next; 
         }
-        if(length == n){
-            temp = head->next;
+        if(fast == nullptr){
+            ListNode* temp = head->next;
             delete head;
             return temp;
         }
-        int breakPoint = length - n;
-        breakPoint--;
-        temp=head;
-        while(breakPoint > 0){
-            temp=temp->next;
-            breakPoint--;
+        ListNode* slow = head;
+        while(fast->next!=nullptr){
+            slow=slow->next;
+            fast=fast->next;
         }
-        // if(temp == nullptr || temp->next == nullptr){
-        //     return nullptr;
-        // }
-        ListNode* temp1 = temp->next;
-       
-        temp->next = temp->next->next;
-        delete temp1;
-        
-        
+        ListNode* temp = slow->next;
+        slow->next = slow->next->next;
+        delete temp;
         return head;
+        
     }
 };
