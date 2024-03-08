@@ -10,7 +10,8 @@ public:
         }
         vector<pair<int, int>> v(mpp.begin(), mpp.end());
         sort(v.begin(), v.end(), compare);
-        int maxFreq=(*(v.begin())).second;
+        // int maxFreq=(*(v.begin())).second;
+        int maxFreq=v.begin()->second;
         int ans=0;
         for(auto it: v){
             if(it.second==maxFreq)
