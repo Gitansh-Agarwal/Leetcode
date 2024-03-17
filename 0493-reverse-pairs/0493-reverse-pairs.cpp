@@ -1,7 +1,7 @@
 
 class Solution {
 public:
-    int cnt=0;
+    // int cnt=0;
     void merge(vector<int> &arr, int low, int mid, int high) {
     vector<int> temp; // temporary array
     int left = low;      // starting index of left half of arr
@@ -39,22 +39,25 @@ public:
     }
 }
 
-void countPairs(vector<int>& arr, int low, int mid, int high){
+int countPairs(vector<int>& arr, int low, int mid, int high){
+    int cnt=0;
     int right=mid+1;
     for(int i=low; i<=mid; i++){
         while(right<=high && (long long)arr[i] > (long long)2*arr[right])
             right++;
         cnt += (right - (mid+1));
-        
     }
+    return cnt;
 }
-void mergeSort(vector<int> &arr, int low, int high) {
-    if (low >= high) return;
+int mergeSort(vector<int> &arr, int low, int high) {
+    int cnt=0;
+    if (low >= high) return cnt;
     int mid = (low + high) / 2 ;
-    mergeSort(arr, low, mid);  // left half
-    mergeSort(arr, mid + 1, high); // right half
-    countPairs(arr, low, mid, high);
+    cnt += mergeSort(arr, low, mid);  // left half
+    cnt += mergeSort(arr, mid + 1, high); // right half
+    cnt += countPairs(arr, low, mid, high);
     merge(arr, low, mid, high);  // merging sorted halves
+    return cnt;
 }
 
     int reversePairs(vector<int>& nums) {
@@ -75,7 +78,7 @@ void mergeSort(vector<int> &arr, int low, int high) {
         //Optimal Solution = Using Merge Sort
         //TC=O(2*NlogN), extra SC=O(N).
         int n=nums.size();
-        mergeSort(nums, 0, n-1);
-        return Solution::cnt;
+        return mergeSort(nums, 0, n-1);
+        // return Solution::cnt;
     }
 };
