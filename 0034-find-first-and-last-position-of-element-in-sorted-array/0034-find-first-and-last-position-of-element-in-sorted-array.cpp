@@ -42,10 +42,15 @@ public:
         return ans;
     }
     vector<int> searchRange(vector<int>& nums, int target) {
-        vector<int> ans;
-        ans.push_back(startPos(nums, target));
-        ans.push_back(endPos(nums, target));
+        // vector<int> ans;
+        // ans.push_back(startPos(nums, target));
+        // ans.push_back(endPos(nums, target));
+        // return ans;
         
-        return ans;
+        //OR
+        int first=startPos(nums, target);
+        if(first==-1)  return {-1, -1};
+        int last=endPos(nums, target);
+        return {first, last};
     }
 };
