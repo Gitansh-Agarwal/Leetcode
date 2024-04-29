@@ -22,7 +22,7 @@ public:
         nextNode->next=NULL;
         
         //step4: Remove/Delete the nextNode from memory.
-        delete(nextNode);
+        delete nextNode;
         
     }
 };
