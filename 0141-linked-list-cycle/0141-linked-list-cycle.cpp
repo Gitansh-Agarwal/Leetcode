@@ -30,18 +30,32 @@ public:
         //Optimal Solution= Floyd's Tortoise and Hare Algorithm.
         //TC=O(N)
         //SC=O(1).
-        if(head==nullptr || head->next==nullptr)
-            return false;
-        ListNode *slow=head;
-        ListNode *fast=head;
-        do{
+        // if(head==nullptr || head->next==nullptr)
+        //     return false;
+        // ListNode *slow=head;
+        // ListNode *fast=head;
+        // do{
+        //     slow=slow->next;
+        //     fast=fast->next;
+        //     if(fast)
+        //         fast=fast->next;
+        // }while(slow!=fast && fast!=nullptr);
+        // if(slow==fast)
+        //     return true;
+        // return false;
+        
+        
+        // or
+
+        ListNode *slow=head, *fast=head;
+        while(fast!=nullptr && fast->next!=nullptr){
             slow=slow->next;
-            fast=fast->next;
-            if(fast)
-                fast=fast->next;
-        }while(slow!=fast && fast!=nullptr);
-        if(slow==fast)
-            return true;
+            fast=fast->next->next;
+            
+            if(slow==fast)
+                return true;
+        }
         return false;
+        
     }
 };
