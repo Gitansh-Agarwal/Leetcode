@@ -10,23 +10,23 @@
  */
 class Solution {
 public:
-    ListNode* middNode(ListNode* head){
-        ListNode *slow=head, *fast=head->next;
-        while(fast!=nullptr && fast->next!=nullptr){
-            slow=slow->next;
-            fast=fast->next->next;
-        }
-        return slow;
-    }
-    //OR Midlle node m1(even length LL) or simply middle node in LL can also be find out using the below method.
     // ListNode* middNode(ListNode* head){
-    //     ListNode *slow=head, *fast=head;
-    //     while(fast!=nullptr || fast->next!=nullptr || fast->next->next!=nullptr){
+    //     ListNode *slow=head, *fast=head->next;
+    //     while(fast!=nullptr && fast->next!=nullptr){
     //         slow=slow->next;
     //         fast=fast->next->next;
     //     }
     //     return slow;
     // }
+    //OR Midlle node m1(even length LL) or simply middle node in LL can also be find out using the below method.
+    ListNode* middNode(ListNode* head){
+        ListNode *slow=head, *fast=head;
+        while(fast!=nullptr && fast->next!=nullptr && fast->next->next!=nullptr){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        return slow;
+    }
     
     
     ListNode* merge2SortedLL(ListNode* leftHead, ListNode* rightHead){
