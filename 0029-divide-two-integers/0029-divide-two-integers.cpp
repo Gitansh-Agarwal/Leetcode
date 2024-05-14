@@ -15,7 +15,9 @@ public:
         
         while(n>=d){
             int cnt=0;
-            while(n>=(d*(1L<<cnt+1))){
+            //Below condition can also be written as while(n>=(d<<(cnt+1)))
+            // if we don't write 1L in the below conditional statement, then error-> Char 27: runtime error: shift exponent 32 is too large for 32-bit type 'int' (solution.cpp)
+            while(n>=(d*(1L<<cnt+1))){//here L->long 
                 cnt++;
             }
             quotient+=(1<<cnt);
