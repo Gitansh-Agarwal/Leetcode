@@ -15,7 +15,7 @@ public:
         
         while(n>=d){
             int cnt=0;
-            while(n>=(d<<cnt+1)){
+            while(n>=(d*(1L<<cnt+1))){
                 cnt++;
             }
             quotient+=(1<<cnt);
