@@ -10,8 +10,7 @@ public:
             char ch2 = t[i];
             
             if((mp1[ch1] != -1 && mp1[ch1] != ch2) ||
-               (mp2[ch2] != -1  && mp2[ch2] != ch1)
-               )
+               (mp2[ch2] != -1  && mp2[ch2] != ch1))
                 return false;
             
             mp1[ch1] = ch2;
