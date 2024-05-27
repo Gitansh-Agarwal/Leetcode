@@ -20,13 +20,30 @@ public:
         
         //We are simply asked to find out the lower bound of the given value.
         //Correct Answer= Using Lower Bound
+        // int n=nums.size();
+        // int low=0;
+        // int high=n-1;
+        // int ans=n;
+        // while(low <= high){
+        //     int mid=low+(high-low)/2;
+        //     if(nums[mid] >= target){
+        //         ans=mid;
+        //         high=mid-1;
+        //     }
+        //     else{
+        //         low=mid+1;
+        //     }
+        // }
+        // return ans;
+        
+        
+        
         int n=nums.size();
-        int low=0;
-        int high=n-1;
-        int ans=n;
-        while(low <= high){
-            int mid=low+(high-low)/2;
-            if(nums[mid] >= target){
+        int ans=-1;
+        int low=0,high=n-1;
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(nums[mid]>=target){
                 ans=mid;
                 high=mid-1;
             }
@@ -34,6 +51,12 @@ public:
                 low=mid+1;
             }
         }
-        return ans;
+        if(ans==-1){
+            return n;
+        }
+        else{
+            return ans;
+        }
+        
     }
 };
