@@ -1,27 +1,8 @@
 class Solution {
 public:
-    // int binarySearch(vector<int>& arr, int target){
-    //     int n=arr.size();
-    //     int low=0;
-    //     int high=n-1;
-    //     int mid;
-    //     while(low<=high){
-    //         mid=(low+high)/2;
-    //         if(arr[mid]==target)
-    //             // return mid;
-    //             break;
-    //         else if(arr[mid]>target){
-    //             high=mid-1;
-    //         }
-    //         else{
-    //             low=mid+1;
-    //         }
-    //     }
-    //     return mid;
-    // }
+    
     int search(vector<int>& nums, int target) {
-        // sort(nums.begin(), nums.end());
-        // return binarySearch(nums, target);
+        //TC=O(logn)
         int low=0;
         int n=nums.size();
         int high=n-1;
