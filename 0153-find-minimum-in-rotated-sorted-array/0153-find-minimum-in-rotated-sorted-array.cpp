@@ -9,7 +9,7 @@ public:
         while(low<=high){
             int mid=(low+high)/2;
             
-            //search space is already sorted, then nums[low] will always be the smallest in that search space
+            // If search space is already sorted, then nums[low] will always be the smallest in that search space
             if(nums[low]<=nums[high]){
                 ans=min(ans, nums[low]);
                 break;
@@ -22,7 +22,7 @@ public:
                 low=mid+1;
             }            
             //right half is sorted
-            else{
+            else if(nums[mid]<=nums[high]){
                 ans=min(ans, nums[mid]);
                 high=mid-1;
             }
