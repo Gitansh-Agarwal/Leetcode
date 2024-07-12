@@ -1,36 +1,36 @@
 class Solution {
 public:
-    int reqNoOfDays(vector<int>& weights, int n, int capacity){
-        // int noOfDays=0;
-        // int capacity=mid;
-        // int i=0;
-        // while(i<n){
-        //     if(weights[i]<=capacity){
-        //         capacity-=weights[i];
-        //         i++;
-        //     }
-        //     else{
-        //         noOfDays++;
-        //         capacity=mid;
-        //     }
-        // }
-        // if(capacity!=mid){
-        //     noOfDays++;
-        // }
-        // return noOfDays;
-        int reqDays=1;
-        int load=0;
-        
-        for(int i=0; i<n; i++){
-            if(load+weights[i] > capacity){
-                reqDays++;
-                load=weights[i];
+    int reqNoOfDays(vector<int>& weights, int n, int mid){
+        int noOfDays=0;
+        int capacity=mid;
+        int i=0;
+        while(i<n){
+            if(weights[i]<=capacity){
+                capacity-=weights[i];
+                i++;
             }
             else{
-                load+=weights[i];
+                noOfDays++;
+                capacity=mid;
             }
         }
-        return reqDays;
+        if(capacity!=mid){
+            noOfDays++;
+        }
+        return noOfDays;
+//         int reqDays=1;
+//         int load=0;
+        
+//         for(int i=0; i<n; i++){
+//             if(load+weights[i] > capacity){
+//                 reqDays++;
+//                 load=weights[i];
+//             }
+//             else{
+//                 load+=weights[i];
+//             }
+//         }
+//         return reqDays;
     }
     void findMax(vector<int>&weights, int n, int& maxi, int& sum){
         for(int i=0; i<n; i++){
