@@ -30,11 +30,19 @@ public:
         while(low<=high){
             int mid = (low+high)/2;
             int splits = findNoOfSplits(nums, mid);
-            if(splits == k){
-                ans=mid;
-                high=mid-1;
-            }
-            else if(splits > k){
+            // if(splits == k){
+            //     ans=mid;
+            //     high=mid-1;
+            // }
+            // else if(splits > k){
+            //     low=mid+1;
+            // }
+            // else{
+            //     high=mid-1;
+            // }
+            
+            //OR
+            if(splits > k){
                 low=mid+1;
             }
             else{
