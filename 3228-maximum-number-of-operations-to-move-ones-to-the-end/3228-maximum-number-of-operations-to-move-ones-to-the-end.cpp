@@ -31,21 +31,48 @@ public:
         
         
         //Simplified Version.
-        reverse(s.begin(),s.end());
+        // reverse(s.begin(),s.end());
         
+//         int n=s.size();
+//         int startIndex=n;
+        
+//         for(int i=0; i<n; i++){
+//             if(s[i]=='0'){
+//                 startIndex=i;
+//                 break;
+//             }
+//         }
+        
+//         int ans=0;
+//         int impact=1;
+//         for(int i=startIndex; i<n; i++){
+//             if(s[i]=='0')   continue;
+//             int cnt=1;
+//             int j;
+//             for(j=i+1; j<n; j++){
+//                 if(s[j]=='0')   break;
+//                 cnt++;
+//             }
+//             ans+=cnt*impact;
+//             impact++;
+//             i=j-1;
+//         }
+//         return ans;
+        
+        
+        
+        //More Shorter Version
+        reverse(s.begin(), s.end());
         int n=s.size();
-        int startIndex=n;
-        
-        for(int i=0; i<n; i++){
-            if(s[i]=='0'){
-                startIndex=i;
-                break;
-            }
+        int impact;
+        if(s[0]=='0'){
+            impact=1;
         }
-        
+        else{
+            impact=0;
+        }
         int ans=0;
-        int impact=1;
-        for(int i=startIndex; i<n; i++){
+        for(int i=0; i<n; i++){
             if(s[i]=='0')   continue;
             int cnt=1;
             int j;
