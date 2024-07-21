@@ -6,7 +6,7 @@ public:
         vector<int> diff(n, 0);
         
         for(int i=0; i<n; i++){
-            diff[i]=nums[i]-target[i];
+            diff[i]=target[i]-nums[i];
         }
         ll ans=0, incOp=0, decOp=0;
         for(int i=0; i<n; i++){
