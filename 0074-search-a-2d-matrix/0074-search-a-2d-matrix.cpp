@@ -34,11 +34,33 @@ public:
         
         
         //TC=O(n + log2(m)).
+        // int n=matrix.size();
+        // int m=matrix[0].size();
+        // for(int i=0; i<n; i++){
+        //     if(target>=matrix[i][0] && target<=matrix[i][m-1]){
+        //         return binarySearch(matrix[i], m, target);
+        //     }
+        // }
+        // return false;
+        
+        // A.T.Q. we can assume the entire 2D matrix as 1D sorted array.
+        //Hypothetically Assuming the given 2D matrix as a single dimension array in our mind and then applying binary search on that array.
         int n=matrix.size();
         int m=matrix[0].size();
-        for(int i=0; i<n; i++){
-            if(target>=matrix[i][0] && target<=matrix[i][m-1]){
-                return binarySearch(matrix[i], m, target);
+        int low=0, high=(n*m-1);
+        while(low<=high){
+            int mid=(low+high)/2;
+            //we are finding row no. and column no. by analyzing the indices assigned to the 2d matrix as if it was a 1d array.
+            int row = mid/m;
+            int col = mid%m;
+            
+            if(matrix[row][col]==target)
+                return true;
+            else if(matrix[row][col]<target){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
             }
         }
         return false;
