@@ -3,32 +3,27 @@ public:
     string reverseWords(string s) {
         stack<string> st;
         int length=s.size();
-        string ans="";
+        string word="";
         for(int i=0; i<length; i++){
             
             if(s[i] == ' '){
-                if(ans==""){
+                if(word==""){
                     continue;
                 }
                 else{
-                    st.push(ans);
-                    ans="";
+                    st.push(word);
+                    word="";
                 }
-                    
-                
             }
             else{
-                ans+=s[i];
+                word+=s[i];
             }
         }
-        if(ans != ""){
-            st.push(ans);
+        if(word != ""){//It means that the word variable contains a word that is why it is not empty.
+            st.push(word);
         }
-        ans="";
-        // while(!st.empty()){
-        //     ans+=st.top()+ " ";
-        //     st.pop();
-        // }
+        string ans="";
+        
         int size=st.size();
         for(int i=0; i<size-1; i++){
             ans+=st.top() + " ";
