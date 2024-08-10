@@ -27,16 +27,32 @@ public:
         
         //Without using Hash Table(not allocating memory dynamically) and using for each loop.
         
-        vector<int> vec(26,0);
+//         vector<int> vec(26,0);
         
-        for(auto i : s){
-            vec[i-'a']++;
+//         for(auto i : s){
+//             vec[i-'a']++;
+//         }
+//         for(auto i : t){
+//             vec[i-'a']--;
+//         }
+//         for(int i=0; i<26; i++){
+//             if(vec[i]!=0){
+//                 return false;
+//             }
+//         }
+//         return true;
+        
+        
+        //Using Hashmap.
+        map<char, int> mpp;
+        for(auto it: s){
+            mpp[it]++;
         }
-        for(auto i : t){
-            vec[i-'a']--;
+        for(auto it: t){
+            mpp[it]--;
         }
-        for(int i=0; i<26; i++){
-            if(vec[i]!=0){
+        for(auto it:mpp){
+            if(it.second!=0){
                 return false;
             }
         }
