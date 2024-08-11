@@ -17,7 +17,9 @@ public:
             int count;
             char ch;
             
-            tie(count, ch) = pq.top();
+            // tie(count, ch) = pq.top();
+            count=pq.top().first;
+            ch=pq.top().second;
             pq.pop();
             
             while(count--){
