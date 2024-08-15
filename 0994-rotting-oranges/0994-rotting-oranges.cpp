@@ -1,59 +1,56 @@
 class Solution {
 public:
-    
     int orangesRotting(vector<vector<int>>& grid) {
-        //SC=O(2* N*M)
-        //TC=O(N*M){queue} + O(N*M*4){every node we are checking its adjacent neighbours}
-        
         int n=grid.size();
         int m=grid[0].size();
-        
-        //n*m -> space
+        //n*m
         queue<pair< pair<int, int>, int>> q;
         
         int vis[n][m];
+        int cntFresh=0;
+        
         for(int i=0; i<n; i++){
             for(int j=0; j<m; j++){
-                if(grid[i][j] == 2){
+                if(grid[i][j]==2){
                     q.push({{i,j}, 0});
                     vis[i][j]=2;
                 }
                 else{
                     vis[i][j]=0;
                 }
-            }
-        }
-        
-        int tm=0;//maximum time
-        int drow[] ={-1, 0, +1, 0};
-        int dcol[] ={0, +1, 0, -1};
-        while(!q.empty()){
-            int r=q.front().first.first;
-            int c=q.front().first.second;
-            int t=q.front().second;
-            tm = max(tm, t);
-            q.pop();
-            
-            for(int i=0; i<4; i++){
-                int nrow= r+drow[i];
-                int ncol= c+dcol[i];
                 
-                if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && vis[nrow][ncol]!=2 && grid[nrow][ncol]==1)                 {
-                    q.push({{nrow, ncol}, t+1});
-                    vis[nrow][ncol]=2;
+                if(grid[i][j]==1){
+                    cntFresh++;
                 }
             }
         }
         
-        // traversing in the visited array to check if there is an orange that is not rotten and is 
-        // actually a fresh orange i.e. it is not an empty cell actually.
-        for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
-                if(vis[i][j]!=2 && grid[i][j]==1){
-                    return -1;
+        int drow[]={-1, 0, +1, 0};
+        int dcol[]={0, +1, 0, -1};
+        int tmax=0;
+        int cnt=0;
+        while(!q.empty()){
+            int row=q.front().first.first;
+            int col=q.front().first.second;
+            int tm=q.front().second;
+            q.pop();
+            if(tm>tmax){
+                tmax=tm;
+            }
+            for(int i=0; i<4; i++){
+                int nRow= row + drow[i];
+                int nCol= col + dcol[i];
+                
+                if(nRow>=0 && nRow<n && nCol>=0 && nCol<m && vis[nRow][nCol]!=2 && grid[nRow][nCol]==1){
+                    q.push({{nRow, nCol}, tm+1});
+                    vis[nRow][nCol]=2;
+                    cnt++;
                 }
             }
         }
-        return tm;
+        if(cnt!=cntFresh){
+            return -1;
+        }
+        return tmax;
     }
 };
