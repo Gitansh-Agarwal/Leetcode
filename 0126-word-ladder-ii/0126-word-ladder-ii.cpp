@@ -5,7 +5,7 @@ class Solution {
     private:
         //performing BackTracking from endWord to beginWord to find out the shortest transformational sequence.
         void dfs(string word, vector<string>& seq){
-            seq.push_back(word);
+            // seq.push_back(word);
             int steps=mpp[word];
             int sz=word.size();
             
@@ -25,14 +25,13 @@ class Solution {
                     
                     if(mpp.find(word) != mpp.end()
                       && mpp[word]+1 == steps){
-                        // seq.push_back(word);
+                        seq.push_back(word);
                         dfs(word, seq);
                         seq.pop_back();
                     }
                 }
                 word[i]=original;
             }
-            // seq.pop_back();
         }
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
@@ -132,7 +131,7 @@ public:
         
         if(mpp.find(endWord) !=mpp.end()){
             vector<string> seq;
-            // seq.push_back(endWord);
+            seq.push_back(endWord);
             dfs(endWord, seq);
         }
         return ans;
