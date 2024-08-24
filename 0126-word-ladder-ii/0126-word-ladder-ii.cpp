@@ -25,14 +25,14 @@ class Solution {
                     
                     if(mpp.find(word) != mpp.end()
                       && mpp[word]+1 == steps){
-                        
+                        // seq.push_back(word);
                         dfs(word, seq);
                         seq.pop_back();
                     }
                 }
                 word[i]=original;
             }
-            
+            // seq.pop_back();
         }
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
