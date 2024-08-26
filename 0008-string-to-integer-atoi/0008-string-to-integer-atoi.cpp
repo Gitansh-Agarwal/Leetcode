@@ -1,46 +1,43 @@
 class Solution {
 public:
     int myAtoi(string s) {
-        int n=s.size();
         int num=0;
-        int temp=0;
-        int i=0;
-        int sign=1;//1 for positive, 0 for negative.
-        while(s[i]==' '){
-            i++;
+    int sign=1;//1 for positive and -1 for negative.
+    int n=s.size();
+    int i=0;
+    while(i<n && s[i]==' '){
+        i++;
+    } 
+
+    //i is at a non-white space character.
+    //try to read the sign if present.
+    if(s[i]=='-'){
+        sign=-1;
+        i++;
+    }
+    else if(s[i]=='+'){
+        sign=1;
+        i++;
+    }
+
+    for(; i<n; i++){
+        
+        if(s[i]>=48 && s[i]<=57){
+            int digit=s[i]-'0';
+            if(sign == 1 && (num> (INT_MAX/10) || (num==(INT_MAX/10) && digit>=7))){
+                return INT_MAX;
+            }
+            if(sign == -1 && (num>(INT_MAX/10) || num==(INT_MAX/10) && digit>=8)){
+                return INT_MIN;
+            }
+
+            num=num*10+digit;
         }
-        while(i<n){
-            if(s[i]=='-' && temp==0){
-                sign=0;
-                temp=1;
-            }
-            else if(s[i]=='+' && temp==0){
-                temp=1;
-            }
-            else if(s[i]>=48 && s[i]<=57){
-                temp=1;
-               if(sign==1){
-                    if(num > (INT_MAX/10)  || (num == (INT_MAX/10) && (s[i]-'0')>7)){
-                        num=INT_MAX;
-                        return num;
-                    }
-               }
-               else{
-                    if((num > (INT_MAX/10))  || (num == (INT_MAX/10) && (s[i]-'0')>=8)){
-                        num=INT_MIN;
-                        return num;
-                    }
-                }  
-                num = num*10 + (s[i]-'0');
-            }
-            else{//any other character.
-                break;
-            }
-            i++;
+        else {
+            break;
         }
-        if(sign==0){
-            num*=-1;
-        }
-        return num;
+
+    }
+    return num*sign;
     }
 };
