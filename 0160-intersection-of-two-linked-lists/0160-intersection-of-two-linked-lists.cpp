@@ -6,31 +6,25 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
- #include<stack>
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        stack<ListNode*> stk1,stk2;
-        ListNode *p1=headA,*p2=headB;
-        while(p1!=nullptr){
-            stk1.push(p1);
-            p1=p1->next;
+        unordered_set<ListNode*> st;
+        ListNode* temp=headA;
+        while(temp!=nullptr){
+            st.insert(temp);
+            temp=temp->next;
         }
-        while(p2!=nullptr){
-            stk2.push(p2);
-            p2=p2->next;
-        }
-        ListNode* intersect=nullptr;
-        // if(!stk1.empty() && !stk2.empty()){
-            
         
-            while(!stk1.empty() && !stk2.empty() && stk1.top()==stk2.top()){
-                intersect=stk1.top();
-                stk1.pop();
-                stk2.pop();
+        temp=headB;
+        while(temp!=nullptr){
+            if(st.find(temp) != st.end()){
+                // return temp;
+                break;
             }
-            return intersect;
-        // }
-        // return nullptr;
+            temp=temp->next;
+        }
+        return temp;
+        
     }
 };
