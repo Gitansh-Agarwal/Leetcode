@@ -1,7 +1,7 @@
 class Solution {
 private:
     bool dfsCheck(int node, vector<int> adj[], vector<int>& vis, vector<int>& pathVis, 
-    vector<int>& orderOfCourses){
+    stack<int>& st){
         
         vis[node]=1;
         pathVis[node]=1;
@@ -10,7 +10,7 @@ private:
         for(auto it: adj[node]){
             //when the given node is unvisited, do a dfs call on it to visit it.
             if(!vis[it]){
-                if(dfsCheck(it, adj, vis, pathVis, orderOfCourses) == true){
+                if(dfsCheck(it, adj, vis, pathVis, st) == true){
                     return true;
                 }
             }
@@ -20,7 +20,7 @@ private:
             }
         }
         pathVis[node]=0;
-        orderOfCourses.push_back(node);
+        st.push(node);
         return false;
     }
 public:
@@ -30,19 +30,24 @@ public:
         vector<int> adj[numCourses];
         int n=prerequisites.size();
         for(int i=0; i<n; i++){
-            adj[prerequisites[i][0]].push_back(prerequisites[i][1]);
+            adj[prerequisites[i][1]].push_back(prerequisites[i][0]);
         }
 
         
         vector<int> vis(numCourses, 0);
         vector<int> pathVis(numCourses, 0);
+        stack<int> st;
         vector<int> orderOfCourses;
         for(int i=0; i<numCourses; i++){
             if(!vis[i]){
                 // if the dfs calls returns a true means that there exists a cycle in the graph.
-                if (dfsCheck(i, adj, vis, pathVis, orderOfCourses) == true)
+                if (dfsCheck(i, adj, vis, pathVis, st) == true)
                     return {}; // it is not possible to finish all courses as cycle exists in the graph.
             }
+        }
+        while(!st.empty()){
+            orderOfCourses.push_back(st.top());
+            st.pop();
         }
         return orderOfCourses;// it is possible to finish all the courses as no cycle exists in the graph.
     }
