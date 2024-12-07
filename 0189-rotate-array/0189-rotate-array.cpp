@@ -1,14 +1,24 @@
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
-        map<int, int> mp;
-        for(int i=0; i<nums.size(); i++){
-            mp[(i+k)%nums.size()] = nums[i];
+        int n = nums.size();
+        
+        k=k%n;
+        if(k==0)
+            return;
+        vector<int> temp(k);
+        
+        int j=n-k;
+        for(int i=0; i<k; i++){
+            temp[i] = nums[j++];
         }
-        int i=0;
-        for(auto it:mp){
-            nums[i] = it.second;
-            i++;
+        
+        j=n-k-1;
+        for(int i=n-1; j>=0; i--, j--){
+            nums[i] = nums[j];
+        }
+        for(int i=0; i<k; i++){
+            nums[i] = temp[i];
         }
         
     }
